@@ -13,7 +13,7 @@
 			<div class="container">
 				<div class="block__wrap">
 					<div class="block__col">
-						<ul class="block__list">
+						<ul class="block__list" id="list">
 							<li class="block__item">Первый элемент списка</li>
 							<li class="block__item">Элемент списка</li>
 							<li class="block__item">Элемент списка</li>
@@ -24,14 +24,14 @@
 						</ul>
 					</div>
 					<div class="block__col">
-						<div class="block__btn">
-							<a href="#" class="block__link">Выбрать первый элемент</a>
+						<div class="block__btn" onclick="giveFunctionsToButtons.choseFirstElement()">
+							<a href="#" class="block__link" >Выбрать первый элемент</a>
 						</div>
-						<div class="block__btn">
-							<a href="#" class="block__link">Выбрать последний элемент</a>
+						<div class="block__btn" onclick="giveFunctionsToButtons.choseLastElement()">
+							<a href="#" class="block__link" >Выбрать последний элемент</a>
 						</div>
-						<div class="block__btn">
-							<a href="#" class="block__link">Выбрать следующий элемент</a>
+						<div class="block__btn" onclick="giveFunctionsToButtons.choseNextElement()">
+							<a href="#" class="block__link" >Выбрать следующий элемент</a>
 						</div>
 						<div class="block__btn">
 							<a href="#" class="block__link">Выбрать предыдущий элемент</a>
