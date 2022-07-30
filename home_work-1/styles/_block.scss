@@ -62,6 +62,12 @@
 
 	&__list {
 		display: flex;
+		flex-wrap: wrap;
+		& > li {
+			font-weight: 600;
+			line-height: 2;
+			margin-right: 20px;
+		}
 	}
 
 	@media (max-width: 1190px) {
@@ -70,11 +76,5 @@
 				flex-wrap: wrap;
 			}
 		}
-	}
-
-	&__item {
-		font-weight: 600;
-		line-height: 2;
-		margin-right: 20px;
 	}
 }
