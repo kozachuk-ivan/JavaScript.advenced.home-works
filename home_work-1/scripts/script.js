@@ -1,22 +1,21 @@
 const giveFunctionsToButtons = {
+	choseFirstAndLastElementCycle(arr) {
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i].hasAttribute('style')) {
+				arr[i].removeAttribute('style');
+			}
+		}
+	},
 	choseFirstElement() {
 		let parent = document.getElementById("list");
 		firstElement = parent.firstElementChild;
-		for (let i = 0; i < parent.children.length; i++) {
-			if (parent.children[i].hasAttribute('style')) {
-				parent.children[i].removeAttribute('style');
-			}
-		}
+		this.choseFirstAndLastElementCycle(parent.children);
 		firstElement.style.color = 'red';
 	},
 	choseLastElement() {
 		let parent = document.getElementById("list");
 		lastElement = parent.lastElementChild;
-		for (let i = 0; i < parent.children.length; i++) {
-			if (parent.children[i].hasAttribute('style')) {
-				parent.children[i].removeAttribute('style');
-			}
-		}
+		this.choseFirstAndLastElementCycle(parent.children);
 		lastElement.style.color = 'red';
 	},
 	choseNextElement() {
@@ -73,4 +72,4 @@ const giveFunctionsToButtons = {
 		parent.insertBefore(element, parent.children[0]);
 		element = parent.children[0];
 	}, 
-}
+};
