@@ -58,18 +58,8 @@ const giveFunctionsToButtons = {
 	addElement() {
 		let createTag = document.createElement('li');
 		createTag.innerHTML = 'Уже этот элемент последний';
-		createTag.style.cssText = `
-				font-weight: 600;
-				line-height: 2;
-				margin-right: 20px;
-		`;
 		let parent = document.getElementById('list').appendChild(createTag);
 		parent.previousElementSibling.innerHTML = 'Элемент списка';
-		parent.previousElementSibling.style.cssText = `
-				font-weight: 600;
-				line-height: 2;
-				margin-right: 20px;
-		`;
 	}, 
 	deleteElement() {
 		let parent = document.getElementById('list');
@@ -79,11 +69,6 @@ const giveFunctionsToButtons = {
 	AddElementInBeggin() {
 		let element = document.createElement('li');
 		element.innerHTML = 'А я первый))';
-		element.style.cssText = `
-				font-weight: 600;
-				line-height: 2;
-				margin-right: 20px;
-		`;
 		let parent = document.getElementById('list');
 		parent.insertBefore(element, parent.children[0]);
 		element = parent.children[0];
