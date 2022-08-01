@@ -70,6 +70,5 @@ const giveFunctionsToButtons = {
 		element.innerHTML = 'А я первый))';
 		let parent = document.getElementById('list');
 		parent.insertBefore(element, parent.children[0]);
-		element = parent.children[0];
 	}, 
 };
