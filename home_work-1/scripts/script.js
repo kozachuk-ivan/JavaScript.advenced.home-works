@@ -25,9 +25,7 @@ function choseNextOrPrevElement(nextOrPrev) {
 	}
 }
 function deleteElement() {
-	let parent = document.getElementById('list');
-	let remove = parent.lastElementChild;
-	parent.removeChild(remove);
+	document.getElementById('list').lastElementChild.remove();
 }
 function addElementsInBegginOrEnd(begginOrEnd) {
 	let element = document.createElement('li');
