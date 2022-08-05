@@ -25,13 +25,15 @@ function choseNextOrPrevElement(nextOrPrev) {
 	}
 }
 function deleteElement() {
-		let parent = document.getElementById('list');
-		let remove = parent.lastElementChild;
-		parent.removeChild(remove);
+	let parent = document.getElementById('list');
+	let remove = parent.lastElementChild;
+	parent.removeChild(remove);
 }
 function addElementsInBegginOrEnd(begginOrEnd) {
 	let element = document.createElement('li');
 	(begginOrEnd === 'beggin') ? element.textContent = 'А я первый)))' : element.textContent = 'Уже я последний(((';
 	let parent = document.getElementById('list');
 	(begginOrEnd === 'beggin') ? parent.insertBefore(element, parent.children[0]) : parent.appendChild(element);
+	(begginOrEnd === 'beggin') ? parent.firstElementChild.nextElementSibling.textContent = 'Элемент списка после первого' : 
+	parent.lastElementChild.previousElementSibling.textContent = 'Элемент списка перед последним';
 }
