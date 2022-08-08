@@ -14,7 +14,7 @@ function choseNextOrPrevElement(nextOrPrev) {
 		if(parent.children[i].hasAttribute('style')) {
 			activeChild = parent.children[i];
 			if (activeChild[nextOrPrev === 'next' ? 'nextElementSibling' : 'previousElementSibling'] === null) {
-				(nextOrPrev === 'next') ? parent.children[0].setAttribute('style', 'color:red') : parent['lastElementChild'].setAttribute('style', 'color:red');
+				parent[nextOrPrev === 'next' ? 'firstElementChild' : 'lastElementChild'].setAttribute('style', 'color:red');
 				parent[nextOrPrev === 'next' ? 'lastElementChild' : 'firstElementChild'].removeAttribute('style');
 			}
 			positionOfChildrens = activeChild[nextOrPrev === 'next' ? 'nextElementSibling' : 'previousElementSibling'];
