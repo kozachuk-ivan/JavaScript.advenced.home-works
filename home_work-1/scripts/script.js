@@ -1,5 +1,5 @@
+let parent = document.getElementById("list");
 function choseFirstOrLastElement(firstOrLast) {
-	let parent = document.getElementById("list");
 	firstOrLast === 'first' ? firstElement = parent.firstElementChild : lastElement = parent.lastElementChild;
 	for(let i = 0; i < parent.children.length; i++) {
 		if (parent.children[i].hasAttribute('style')) parent.children[i].removeAttribute('style');
@@ -7,7 +7,6 @@ function choseFirstOrLastElement(firstOrLast) {
 	(firstOrLast === 'first') ? firstElement.setAttribute('style', 'color:red') : lastElement.setAttribute('style', 'color:red');
 }
 function choseNextOrPrevElement(nextOrPrev) {
-	let parent = document.getElementById("list");
 	let activeChild;
 	let positionOfChildrens;
 	for (let i = 0; i < parent.children.length; i++) {
@@ -25,12 +24,11 @@ function choseNextOrPrevElement(nextOrPrev) {
 	}
 }
 function deleteElement() {
-	document.getElementById('list').lastElementChild.remove();
+	parent.lastElementChild.remove();
 }
 function addElementsInBegginOrEnd(begginOrEnd) {
 	let element = document.createElement('li');
 	(begginOrEnd === 'beggin') ? element.textContent = 'А я первый)))' : element.textContent = 'Уже я последний(((';
-	let parent = document.getElementById('list');
 	(begginOrEnd === 'beggin') ? parent.insertBefore(element, parent.children[0]) : parent.appendChild(element);
 	(begginOrEnd === 'beggin') ? parent.firstElementChild.nextElementSibling.textContent = 'Элемент списка после первого' : 
 	parent.lastElementChild.previousElementSibling.textContent = 'Элемент списка перед последним';
