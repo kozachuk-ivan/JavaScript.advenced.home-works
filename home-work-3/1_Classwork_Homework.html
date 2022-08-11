@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        .wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .timer {
+            padding: 20px;
+            font-weight: 700;
+            font-size: 2rem;
+            color: orangered;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<!-- Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+также добавьте кнопки которые останавливают отчет, и запускают его заново и добавьте кнопку
+обнуляющую отcчет. Также попробуйте изменить код так чтобы отсчет начинался с 30 и заканчивался на 1. -->
+<body>
+    <div class="wrap">
+        <p class="timer"></p>
+        <input type="button" value="Start timer" onclick="startUsualOrReverseTimer('usual')">
+        <input type="button" value="Start reverse timer" onclick="startUsualOrReverseTimer('reverse')">
+        <input type="button" value="Stop timer" onclick="stopTimer()">
+        <input type="button" value="Restart" onclick="restartTimer()">
+        <input type="button" value="Reset" onclick="resetTimer()">
+    </div>
+    <script>
+        let timer = document.querySelector('.timer');
+        let stopInterval;
+        let count = 0;
+        function startUsualOrReverseTimer(usualOrReverse) {
+            stopInterval = clearInterval(stopInterval);
+            stopInterval = setInterval(function() {
+                if ((usualOrReverse === 'usual') ? count < 30 : count > 1 ) {
+                    (usualOrReverse === 'usual') ? count++ : count--;
+                    timer.textContent = count;
+                } else {
+                    clearInterval(stopInterval);
+                }
+            }, 1000);
+        }
+        function stopTimer() {
+            stopInterval = clearInterval(stopInterval);
+        }
+        function restartTimer() {
+            count = 0;
+            startUsualOrReverseTimer('usual');
+        }
+        function resetTimer() {
+            count = 0;
+            timer.textContent = 0;
+            stopInterval = clearInterval(stopInterval);
+        }
+    </script>
+</body>
+</html>
