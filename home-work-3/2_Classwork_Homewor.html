@@ -23,36 +23,25 @@
         let usersSplitText;
         let usersEnteringText;
         let p;
-        let takeA = /[aA|аА]/g;
-        let takeALetter;
+        let takeA = /[a|а]/gi;
 
         enterBtn.onclick = getEnteringAndSplitingUsersText;
 
         function getEnteringAndSplitingUsersText() {
             usersEnteringText = document.querySelector('#enteringText').value;
-            takeALetter = usersEnteringText.match(takeA);
+            let takeALetter = usersEnteringText.match(takeA);
+            if (takeALetter) alert(`${takeALetter} - всего ${takeALetter.length}`);
             usersSplitText = usersEnteringText.split(' ');
-            alert(`${takeALetter} - всего ${takeALetter.length} буквы "а/А"` );
             createUlLiListFotWords();
             document.querySelector('#enteringText').value = '';
         }
-
         function createUlLiListFotWords() {
-            if(p) p.remove();
+            if (p) p.remove();
             p = document.createElement('p');
             form.after(p);
             let usersList = usersSplitText.map(item => {
                 if (item === '') return;
-                p.insertAdjacentHTML(
-                    'beforeend',
-                    `
-                        <ul>
-                            <li>
-                                ${item}
-                            </li>
-                        </ul>
-                    `
-                );
+                p.insertAdjacentHTML('beforeend', `<ul><li>${item}</li></ul>`);
             });
             transformText();
         }
