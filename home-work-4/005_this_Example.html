@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ключевое слово this</title>
+    <style>
+        .div__parent {
+            display: flex;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .div {
+            background-color:green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div__parent">
+        <div class="div" data-color="aqua"></div>
+        <div class="div" data-color="yellow"></div>
+        <div class="div" data-color="purple"></div>
+        <div class="div" data-color="orangered"></div>
+        <div class="div" data-color="silver"></div>
+    </div>
+    <script>
+
+        //////////////// СПОСІБ №1
+
+        let divParent = document.querySelector('.div__parent');
+        divParent.addEventListener('mouseover', function(event) {
+            let child = event.target.closest('.div');
+            if(child) {
+                let color = child.getAttribute('data-color');
+                child.setAttribute(`style`, `background-color: ${color}`);
+                child.textContent = color;
+            }
+        });
+        divParent.addEventListener('mouseout', function(event) {
+            let child = event.target.closest('.div');
+            if(child) {
+                child.removeAttribute('style');
+                child.textContent = ``;
+            }
+        });
+
+        //////////////// СПОСІБ №2
+
+        // let div = document.querySelectorAll(`.div`);
+        // div.forEach(item => {
+        //     item.addEventListener('mouseenter', function() {
+        //         let color = item.getAttribute('data-color');
+        //         item.setAttribute(`style`, `background-color: ${color}`);
+        //         item.textContent = color;
+        //     });
+        // });
+        // div.forEach(item => {
+        //     item.addEventListener('mouseleave', function() {
+        //         item.removeAttribute('style');
+        //         item.textContent = ``;
+        //     });
+        // });
+        
+        ///////////////////////////////////////////////
+        //////////////// СПОСІБ №1 
+
+        window.addEventListener('beforeunload', function(event) {
+            event.preventDefault();
+            event.returnValue = ``;
+        });
+
+        //////////////// СПОСІБ №2
+
+        // window.onbeforeunload = function() {
+        //     return false;
+        // };
+
+    </script>
+</body>
+</html>

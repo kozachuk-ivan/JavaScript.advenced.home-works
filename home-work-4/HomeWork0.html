@@ -1,0 +1,41 @@
+<!-- Напишите регулярные выражения, которые будут выбирать 
+    индекс - 55535 - 5 numbers
+    ip адресс, пример 255.255.255.255
+    цены в долларах - $0.84, $1232.84, $4
+    дата в виде - 30/12/2016 - день, месяц, год
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Document</title>
+ </head>
+ <body>
+    <p>
+        Lorem $1 ipsum 30/12/2016 dolor sit 33225 amet  55555 consectetur 255.255.255.255 adipisicing elit. Fuga deserunt 48961 rerum atque $0.84, $1232.84, $4 vero soluta error illo, mollitia hic necessitatibus harum 33125 ipsam veniam! Placeat cumque tempore voluptatibus velit quo quasi dolores.
+    </p>
+ 	<script type="text/javascript">
+        let p = document.querySelector('p').textContent;
+
+        // индекс - 55535 - 5 numbers
+        let index = /\d{5}/g;
+        let res = p.match(index);
+        console.log(res);
+
+        // ip адресс, пример 255.255.255.255
+        let ip = /(\d{3})\.(\d{3})\.(\d{3})\.(\d{3})/g;
+        let res1 = p.match(ip);
+        console.log(res1);
+
+        // цены в долларах - $0.84, $1232.84, $4
+        let price = /\$\d+\.?\d?\d?/g;
+        let res2 = p.match(price);
+        console.log(res2);
+        
+        // дата в виде - 30/12/2016 - день, месяц, год
+        let data = /\d{2}\/\d{2}\/\d{4}/g;
+        let res3 = p.match(data);
+        console.log(res3);
+ 	</script>
+ </body>
+ </html>
