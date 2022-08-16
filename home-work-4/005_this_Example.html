@@ -31,22 +31,21 @@
     </div>
     <script>
 
+        function getRandomColor(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; 
+        }
+
         //////////////// СПОСІБ №1
 
         let divParent = document.querySelector('.div__parent');
         divParent.addEventListener('mouseover', function(event) {
             let child = event.target.closest('.div');
             if(child) {
-                let color = child.getAttribute('data-color');
-                child.setAttribute(`style`, `background-color: ${color}`);
+                child.setAttribute(`style`, `background-color: rgb(${getRandomColor(0,255)},${getRandomColor(0,255)},${getRandomColor(0,255)})`);
+                let color = child.getAttribute('style');
                 child.textContent = color;
-            }
-        });
-        divParent.addEventListener('mouseout', function(event) {
-            let child = event.target.closest('.div');
-            if(child) {
-                child.removeAttribute('style');
-                child.textContent = ``;
             }
         });
 
@@ -54,28 +53,22 @@
 
         // let div = document.querySelectorAll(`.div`);
         // div.forEach(item => {
-        //     item.addEventListener('mouseenter', function() {
-        //         let color = item.getAttribute('data-color');
-        //         item.setAttribute(`style`, `background-color: ${color}`);
-        //         item.textContent = color;
-        //     });
-        // });
-        // div.forEach(item => {
-        //     item.addEventListener('mouseleave', function() {
-        //         item.removeAttribute('style');
-        //         item.textContent = ``;
-        //     });
+        //      item.addEventListener('mouseenter', function() {
+        //         child.setAttribute(`style`, `background-color: rgb(${getRandomColor(0,255)},${getRandomColor(0,255)},${getRandomColor(0,255)})`);
+        //         let color = child.getAttribute('style');
+        //         child.textContent = color;
+        //      });
         // });
         
         ///////////////////////////////////////////////
-        //////////////// СПОСІБ №1 
+        //////////////// СПОСІБ №1 (відміна дефолтних дій браузера)
 
         window.addEventListener('beforeunload', function(event) {
             event.preventDefault();
             event.returnValue = ``;
         });
 
-        //////////////// СПОСІБ №2
+        //////////////// СПОСІБ №2 (відміна дефолтних дій браузера)
 
         // window.onbeforeunload = function() {
         //     return false;
