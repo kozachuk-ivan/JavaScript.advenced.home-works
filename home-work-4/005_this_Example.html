@@ -43,8 +43,7 @@
             let child = event.target.closest('.div');
             if(child) {
                 child.setAttribute(`style`, `background-color: rgb(${getRandomColor(0,255)},${getRandomColor(0,255)},${getRandomColor(0,255)})`);
-                let color = child.getAttribute('style');
-                child.textContent = color;
+                child.textContent = child.style.backgroundColor;
             }
         });
 
@@ -54,8 +53,7 @@
         // div.forEach(item => {
         //      item.addEventListener('mouseenter', function() {
         //         child.setAttribute(`style`, `background-color: rgb(${getRandomColor(0,255)},${getRandomColor(0,255)},${getRandomColor(0,255)})`);
-        //         let color = child.getAttribute('style');
-        //         child.textContent = color;
+        //         child.textContent = child.style.backgroundColor;
         //      });
         // });
         
