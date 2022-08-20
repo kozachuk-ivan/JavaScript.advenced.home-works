@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <!-- 1. Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик. -->
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        body {
+            display: flex;
+        }
+        .block {
+            border: 3px double;
+            text-align: center;
+        }
+        .block:not(#up) {
+            margin-right: 10px;
+        }
+        .text {
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="block">
+        <div class="text">Текст 1. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, temporibus!</div>
+        <input type="button" value="Удалить текст">
+    </div>
+    <div class="block">
+        <div class="text">Текст 2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, sapiente e</div>
+        <input type="button" value="Удалить текст">
+    </div>
+    <div class="block">
+        <div class="text">Текст 3. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi iure ad deleniti quibusdam sit commodi, accusantium dolores officiis velit earum!</div>
+        <input type="button" value="Удалить текст">
+    </div>
+    <div class="block">
+        <div class="text">Текст 4. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur repellat perspiciatis nobis cum aperiam. Consequuntur?</div>
+        <input type="button" value="Удалить текст">
+    </div>
+    <div class="block" id="up">
+        <div class="text">Текст 5. Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, ullam!</div>
+        <input type="button" value="Удалить текст">
+    </div>
+
+    <script>
+        let body = document.body;
+        body.addEventListener('click', deleteButtonParent);
+
+        function deleteButtonParent(event) {
+            if(event.target.closest('[value="Удалить текст"]')) {
+                event.target.parentElement.remove();
+                // event.target.closest('.block').remove();
+            }
+        }
+    </script>
+</body>
+</html>

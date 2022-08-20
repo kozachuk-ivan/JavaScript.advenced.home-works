@@ -1,0 +1,44 @@
+<!--
+Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт.
+При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны пропасть.
+Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+    </head>
+    <style>
+        .text {
+            visibility: hidden;
+        }
+        ._active {
+            visibility: visible;
+        }
+    </style>
+
+    <body>
+        <a href="#">Нажми, если хочешь увидить текст</a>
+        <div class="text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo, aliquam?</div>
+        <input type="button" value="Отменить магию">
+    </body>
+
+    <script>
+        let link = document.querySelector('a');
+        let text = document.querySelector('.text');
+        let button = document.querySelector('[value="Отменить магию"]');
+
+        link.addEventListener('click', makeVisibleText);
+        button.addEventListener('click', removeEventListenerFromLink);
+
+        function makeVisibleText(event) {
+            text.classList.toggle('_active');
+            link.textContent = (link.textContent === 'Нажми, если хочешь cкрыть текст') ? 'Нажми, если хочешь увидить текст' : 'Нажми, если хочешь cкрыть текст';
+            event.preventDefault();
+        }
+
+        function removeEventListenerFromLink() {
+            link.removeEventListener('click', makeVisibleText);
+        }
+    </script>
+</html>

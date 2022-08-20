@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<!-- 2. Доработайте пример 004_Attr_Tech.html таким образом, чтобы при наведении на span элементы,
+	подсказка сплыва под ними, а не в модальном окне. Используйте addEventListener -->
+	<meta charset="utf-8">
+	<script>
+		window.onload = function() {
+			let spans = document.querySelectorAll('span')
+			let spanElement = document.createElement('span');
+
+			spans.forEach(item => {
+				item.addEventListener('mouseenter', showTextUnder);
+				item.addEventListener('mouseleave', hideTextUnder);
+			});
+
+			function showTextUnder(event) {
+				let attribute = event.target.getAttribute('data-tooltip');
+				spanElement.textContent = attribute;
+				spanElement.style.cssText = 
+				`
+					position:absolute;
+					left: ${event.target.getBoundingClientRect().left}px;
+					top: ${event.target.getBoundingClientRect().bottom}px;
+				`;
+				document.body.insertAdjacentElement('afterbegin', spanElement);
+				event.target.setAttribute('style','visibility: hidden');
+			}
+			
+			function hideTextUnder(event) {
+				event.target.setAttribute('style','visibility: visible');
+				spanElement.remove();
+			}
+		};
+	
+    </script>
+	<style>
+		span{
+			display: inline-flex;
+		}
+		#main-div {
+			display: flex;
+			gap: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div id="main-div">
+		<span data-tooltip="наведите">наведите</span>
+		<span data-tooltip="для">для</span>
+		<span data-tooltip="подсказки">подсказки</span>
+    </div>
+</body>
+</html>
