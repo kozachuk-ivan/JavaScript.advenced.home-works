@@ -26,17 +26,24 @@
 		let coordX;
 		let coordY;
 
-		block.addEventListener('mousedown', mouseDownIntoTheBlock);
-		block.addEventListener('mouseup', mouseUpIntoTheBlock);
+		window.addEventListener('mousedown', mouseDownIntoTheBlock);
+		window.addEventListener('mouseup', mouseUpIntoTheBlock);
 
 		function mouseDownIntoTheBlock() {
-			coordX = event.clientX - block.getBoundingClientRect().left;
-			coordY = event.clientY - block.getBoundingClientRect().top;
-			window.addEventListener('mousemove', blockMove);
+			if(event.target.closest('.block')) {
+				coordX = event.clientX - block.getBoundingClientRect().left;
+				coordY = event.clientY - block.getBoundingClientRect().top;
+				window.addEventListener('mousemove', blockMove);
+			}
 		}
 
 		function mouseUpIntoTheBlock() {
-			window.removeEventListener('mousemove', blockMove);
+			if(!event.target.closest('.block')) {
+				block.removeAttribute('style');
+				window.removeEventListener('mousemove', blockMove);
+			} else {
+				window.removeEventListener('mousemove', blockMove);
+			}
 		}
 
 		function blockMove(top, left) {
