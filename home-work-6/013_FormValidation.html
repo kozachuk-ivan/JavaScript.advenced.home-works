@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<!-- Переделайте примерм 013 через работу атрибутов / addEvemtListener().
+Попробуйте варианты с рефакторингом -->
+<head>
+    <meta charset="UTF-8">
+    <title>Пример проверки достоверности ввода</title>
+    <style type="text/css">
+        .invalid {
+            background-color: Pink;
+        }
+
+        .valid {
+            background-color: LightGreen;
+        }
+    </style>
+</head>
+<body>
+    <form name="mainForm">
+            Name:
+        <input type="text" name="userName" /><br />
+            email:
+        <input type="text" name="email" /><br />
+            zipcode:
+        <input type="text" name="zip" /><br />
+        <input type="submit" name="submit" />
+    </form>
+    <script type="text/javascript" src="./Validate.js"></script>
+</body>
+</html>
