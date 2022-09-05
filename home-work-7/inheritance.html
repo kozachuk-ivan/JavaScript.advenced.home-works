@@ -10,67 +10,67 @@
     <script>
         // НАСЛЕДОВАНИЕ (cпособ 1)
         
-        function Person(walk, eat, drink) {
-            this.walk = walk;
-            this.eat = eat;
-            this.drink = drink;
-        }
+        // function Person(walk, eat, drink) {
+        //     this.walk = walk;
+        //     this.eat = eat;
+        //     this.drink = drink;
+        // }
 
-        function Doctor() {
-            this.cure = function() {
-               return `Doctor ${this.eat} eating and ${this.drink} drinking, but than he need to cure man - ${this.walk} walking`;
-            };
-        }
+        // function Doctor() {
+        //     this.cure = function() {
+        //        return `Doctor ${this.eat} eating and ${this.drink} drinking, but than he need to cure man - ${this.walk} walking`;
+        //     };
+        // }
 
-        function Soldier() {
-            this.shoot = function() {
-               return `Soldier ${this.eat} eating and ${this.drink} drinking, but than he need to kill mans - ${this.walk} walking`;
-            };
-        }
+        // function Soldier() {
+        //     this.shoot = function() {
+        //        return `Soldier ${this.eat} eating and ${this.drink} drinking, but than he need to kill mans - ${this.walk} walking`;
+        //     };
+        // }
 
-        Doctor.prototype = new Person('very fast', 'love to do', 'very usual');
-        Soldier.prototype = new Person('very fast', 'love to do', 'very usual');
+        // Doctor.prototype = new Person('very fast', 'love to do', 'very usual');
+        // Soldier.prototype = new Person('very fast', 'love to do', 'very usual');
 
-        let doctor = new Doctor();
-        let soldier = new Soldier();
+        // let doctor = new Doctor();
+        // let soldier = new Soldier();
 
-        console.log(doctor);
-        console.log(soldier);
-        console.log(soldier.shoot());
-        console.log(doctor.cure());
+        // console.log(doctor);
+        // console.log(soldier);
+        // console.log(soldier.shoot());
+        // console.log(doctor.cure());
 
         // НАСЛЕДОВАНИЕ (cпособ 2)
 
-        // class Person {
-        //     constructor (walk, eat, drink) {
-        //         this.walk =  walk;
-        //         this.eat = eat;
-        //         this.drink = drink;
-        //     }
-        // }
+        class Person {
+            constructor (walk, eat, drink) {
+                this.walk =  walk;
+                this.eat = eat;
+                this.drink = drink;
+            }
+        }
 
-        // class Doctor extends Person {
-        //     constructor(walk, eat, drink, cure) {
-        //         super(walk = 'very fast', eat = 'love to do', drink = 'very usual');
-        //         this.cure = function() {
-        //             return `Doctor ${this.eat} eating and ${this.drink} drinking, but than he need to cure man - ${this.walk} walking`;
-        //         };
-        //     }
-        // }
+        class Doctor extends Person {
+            constructor(walk, eat, drink) {
+                super(walk = 'very fast', eat = 'love to do', drink = 'very usual');
+            }
+            cure () {
+                return `Doctor ${this.eat} eating and ${this.drink} drinking, but than he need to cure man - ${this.walk} walking`;
+            };
+        }
 
-        // class Soldier extends Person {
-        //     constructor(walk, eat, drink, shoot) {
-        //         super(walk = 'very fast', eat = 'love to do', drink = 'very usual');
-        //         this.shoot = function() {
-        //             return `Soldier ${this.eat} eating and ${this.drink} drinking, but than he need to kill mans - ${this.walk} walking`;
-        //         };
-        //     }
-        // }
+        class Soldier extends Person {
+            constructor(walk, eat, drink) {
+                super(walk = 'very fast', eat = 'love to do', drink = 'very usual');
+            }
+            shoot () {
+                return `Soldier ${this.eat} eating and ${this.drink} drinking, but than he need to kill mans - ${this.walk} walking`;
+            };
+        }
   
-        // let doctor = new Doctor();
-        // console.log(doctor);
-        // let soldier = new Soldier(); 
-        // console.log(soldier);
+        let doctor = new Doctor();
+        console.log(doctor);
+        let soldier = new Soldier(); 
+        console.log(soldier);
         
 
     </script>
