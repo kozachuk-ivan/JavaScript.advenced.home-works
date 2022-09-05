@@ -1,0 +1,47 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+
+    <script>
+        // ПОЛИМОРФИЗМ 
+
+        function MainDoctor() {
+            this.cure = function() {
+                return `Я смотрю, чтобы все делали свою роботу!`;
+            }
+        }
+
+        function EmergacyDoctor(walk, eat, drink) {
+            this.walk = walk;
+            this.eat = eat;
+            this.drink = drink;
+        }
+
+        function Dentist() {
+            this.cure = function() {
+                return `Я лечу ЗУБЫ людей`;
+            }
+        }
+
+        function Surgeon() {
+            this.cure = function() {
+                return `Я делаю операции людям`;
+            }
+        }
+
+        EmergacyDoctor.prototype = new MainDoctor();
+        Dentist.prototype = new EmergacyDoctor('very fast', 'love to do', 'very usual');
+        Surgeon.prototype = new EmergacyDoctor('very fast', 'love to do', 'very usual');
+
+        let emergacyDoctor = new EmergacyDoctor('very fast', 'love to do', 'very usual');
+        let dentist = new Dentist();
+        let surgeon = new Surgeon();
+
+    </script>
+</body>
+</html>
