@@ -8,7 +8,7 @@
 <body>
 
     <script>
-        // ПОЛИМОРФИЗМ 
+        // ПОЛИМОРФИЗМ (спосіб 1)
 
         function MainDoctor() {
             this.cure = function() {
@@ -45,6 +45,43 @@
         console.log(emergacyDoctor);
         console.log(dentist);
         console.log(surgeon);
+
+        // ПОЛИМОРФИЗМ (спосіб 2)
+
+        // class MainDoctor {
+        //     cure () {
+        //         return `Я смотрю, чтобы все делали свою роботу!`;
+        //     }
+        // }
+
+        // class Doctor extends MainDoctor {
+        //     constructor(walk, eat, drink, cure) {
+        //         super(cure);
+        //         this.walk = true;
+        //         this.eat = true;
+        //         this.drink = true;
+        //     }
+        // }
+
+        // class Dentist extends Doctor {
+        //     cure () {
+        //         return `Я лечу ЗУБЫ людей`;
+        //     }
+        // }
+
+        // class Surgeon extends Doctor {
+        //     cure () {
+        //         return `Я делаю операции людям`;;
+        //     }
+        // }
+
+        // let doctor = new Doctor();
+        // let dentist = new Dentist();
+        // let surgeon = new Surgeon();
+
+        // console.log(doctor);
+        // console.log(surgeon);
+        // console.log(dentist);
     </script>
 </body>
 </html>
