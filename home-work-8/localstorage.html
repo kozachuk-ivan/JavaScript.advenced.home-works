@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        .block {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            max-width: 500px;
+            font-weight: 500;
+            line-height: 130%;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="block">
+        <p class="block__user"></p>
+        <input class="block__btn" type="button" value="Выход">
+    </div>
+    <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу,
+    которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему"
+    а рядом разместите кнопку "Выход" которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+    <script>
+        (function() {
+            localStorage.setItem('admin','admin');
+            localStorage.setItem('Admin','Admin');
+        })();
+
+        let enteringModalWindow = prompt('Введите им\'я пользователя для входа');
+        let block = document.querySelector('.block');
+        let block__btn = document.querySelector('.block__btn');
+        let block__user = document.querySelector('.block__user');
+
+        block__btn.addEventListener('click', quitFromAccount);
+
+        if (enteringModalWindow) {
+            function checkingUsersInfo() {
+                for(let key in localStorage) {
+                    if(localStorage[key] === enteringModalWindow) {
+                        block.style.display = 'block';
+                        block__user.textContent = `Пользоваетль ${localStorage[key]} вошел в систему`;
+                        break;
+                    }
+                }
+            }
+            checkingUsersInfo();
+        }
+
+        function quitFromAccount() {
+            block.style.display = 'none';
+            if( block.style.display === 'none') {
+                enteringModalWindow = prompt('Введите им\'я пользователя для входа');
+            }
+            if(enteringModalWindow) {
+                checkingUsersInfo();
+            }
+        }
+    </script>
+</body>
+</html>
