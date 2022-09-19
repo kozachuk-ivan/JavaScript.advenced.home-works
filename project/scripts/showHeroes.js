@@ -47,14 +47,14 @@ export function introAllPersons() {
 
 	async function showNextHeroes() {
 		count++;
-		countSpan.textContent = count;
-		await getHeroes(`https://swapi.dev/api/people/?page=${count}`)	
+		await getHeroes(`https://swapi.dev/api/people/?page=${count}`);
+		countSpan.textContent = count;	
 	}
 
 	async function showPrevHeroes() {
 		count--;
+		await getHeroes(`https://swapi.dev/api/people/?page=${count}`);
 		countSpan.textContent = count;
-		await getHeroes(`https://swapi.dev/api/people/?page=${count}`)
 	}
 
 	function closePopUp() {
@@ -70,10 +70,11 @@ export function introAllPersons() {
 			let target;
 			(parentTarget === event.target.closest('.show__card')) ? target = parentTarget.firstElementChild.textContent :
 			target = parentTarget.textContent;
-			let resulteHeroes = jsonCurentHeroes.results;
+			let resulteHeroes = await jsonCurentHeroes.results;
 			let films = [];
 			let planet;
 			let species;
+			
 			await resulteHeroes.forEach(hero => {
 				if(hero.name === target) {
 					films = hero.films;
@@ -98,11 +99,13 @@ export function introAllPersons() {
 						`); 
 					});
 			});
+
 			let getPlanet = await fetch(`${planet}`)
 				.then(data => data.json())
 				.then(data => characterPlanet.textContent = data.name);
 
 			characterSubspecies.textContent = 'unknown';
+
 			await species.forEach(item => {
 				let getSpacies = fetch(`${item}`)
 					.then(data => data.json())
@@ -113,6 +116,5 @@ export function introAllPersons() {
 			document.body.style.overflow = 'hidden';
 		}
 	}
-
 	getHeroes(`https://swapi.dev/api/people/?page=${count}`);
 }
