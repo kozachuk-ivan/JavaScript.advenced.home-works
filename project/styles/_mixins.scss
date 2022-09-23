@@ -1,9 +1,0 @@
-@mixin scrollStyles ($transformDuration, $transformDelay) {
-	transform: translate(0, 110%);
-	opacity: 0;
-	transition: transform $transformDuration ease $transformDelay, opacity $transformDuration ease $transformDelay;
-}
-@mixin activeStyles {
-	transform: translate(0, 0);
-	opacity: 1;
-}
